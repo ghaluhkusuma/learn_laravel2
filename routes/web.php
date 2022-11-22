@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HalamanController;
 use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 //http://127.0.0.1:8000/==> view welcome
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // //http://127.0.0.1:8000/siswa ==> <h1> SAYA SISWA </H1>
 // Route::get('/siswa', function () {
@@ -38,3 +39,7 @@ Route::get('/', function () {
 
 Route::get("siswa",[SiswaController::class,"index"]);
 Route::get("siswa/{id}",[SiswaController::class,"detail"])->where('id', '[0-9]+');
+
+Route::get("/",[HalamanController::class,"index"]);
+Route::get("/tentang",[HalamanController::class,"tentang"]);
+Route::get("/kontak",[HalamanController::class,"kontak"]);
