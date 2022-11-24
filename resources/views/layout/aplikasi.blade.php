@@ -9,6 +9,7 @@
 </head>
 <body>
     <div class="container py-5">
+        @include('komponen/pesan')
         @yield("konten")
     </div>
 

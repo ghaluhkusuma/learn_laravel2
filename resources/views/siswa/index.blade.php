@@ -1,7 +1,7 @@
 @extends("layout/aplikasi")
 
 @section("konten")
-
+<a href="/siswa/create" class ="btn btn-primary">Tambah Data Siswa</a>
 <table class="table">
     <thead>
         <tr>
