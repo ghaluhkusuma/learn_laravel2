@@ -79,7 +79,8 @@ class SiswaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = siswa::where("nomor_induk", $id)->first();
+        return view("siswa.edit")->with("data",$data);
     }
 
     /**
@@ -91,7 +92,23 @@ class SiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+           
+            "nama"=>"required",
+            "alamat"=>"required",
+
+        ],[
+            
+            "nomor_induk.numeric" => "Nomor Induk Wajib diisi dalam angka",
+            "nama.required" => "Nama Wajib diisi",
+            "alamat.required" => "Alamat Wajib diisi",
+        ]);
+        $data=[
+            "nama"=>$request->input("nama"),
+            "alamat"=>$request->input("alamat")
+        ];
+        siswa::where("nomor_induk",$id)->update($data);
+        return redirect("/siswa")->with("success","Berhasil melakukan update data");
     }
 
     /**
@@ -102,6 +119,7 @@ class SiswaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        siswa::where("nomor_induk",$id)->delete();
+        return redirect("/siswa")->with("success","Berhasil hapus data");
     }
 }

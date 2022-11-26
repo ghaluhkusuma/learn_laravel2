@@ -16,11 +16,10 @@ class HalamanController extends Controller
         $judul = "Ini adalah Halaman Kontak";
         $data = [
             "judul" => "Ini adalah Halaman Kontak",
-            "kontak" =>[
+            "kontak" =>"08654436676",
             "email" => "ghaluhkusuma21@gmail.com",
             "ig" => "@ghaluhkusuma"
-            ]
-        ];
+            ];
         return view("halaman/kontak")->with ($data);
     }
 }
